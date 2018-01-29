@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Video } from './video/video';
+import { LocalStorage } from '../providers/localStorage';
 
 @Component({
 	selector: 'app-root',
@@ -7,19 +7,11 @@ import { Video } from './video/video';
 	styleUrls: ['./app.component.css']
 })
 
-const VIDEOS: Video[] = [
-	{ id: 1, name: 'CBR250R' },
-	{ id: 2, name: 'CBR150R' },
-	{ id: 3, name: 'Ninja250R' },
-	{ id: 4, name: 'CBR1000R' },
-	{ id: 5, name: 'Ninja1000RR' }
-];
-
 export class AppComponent {
-	title = 'Search Videos';
-    videos = VIDEOS;
-    selectedVideo: Video;
-    onSelect(video: Video): void {   
-        this.selectedVideo = video;
-    }
+	public title: string;
+	
+	constructor(public storage: LocalStorage) {
+		this.title = 'Search Videos';
+		this.storage.remove('search');
+	}
 }

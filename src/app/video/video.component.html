@@ -1,0 +1,15 @@
+<section class="video-info">
+    <mat-card *ngIf="video">
+        <mat-card-header>
+            <mat-card-title>{{video.snippet.title}}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <iframe class="ytplayer" [src]='safeURL' frameborder="0" allowfullscreen></iframe>
+            <p>{{video.statistics.viewCount}} visualizações</p>
+            <p>{{video.snippet.description}}</p>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-button routerLink="/">Voltar para os resultados de busca</button>
+        </mat-card-actions>
+    </mat-card>
+</section>
